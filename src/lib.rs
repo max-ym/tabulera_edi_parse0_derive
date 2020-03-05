@@ -53,7 +53,7 @@ pub fn derive_parse_error(tokens: TokenStream) -> TokenStream {
         let name = field.name.to_owned();
         let ty = field.ty.to_owned();
         new_fields.push({
-                quote!(#name: #ty,)
+                quote!(pub #name: #ty,)
         });
     }
     let mut for_brace_tokens = quote!();
