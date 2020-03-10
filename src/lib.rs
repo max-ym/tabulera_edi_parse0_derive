@@ -95,7 +95,7 @@ fn validate(fields: &Vec<MyField>, dest: TokenStream2) -> proc_macro2::TokenStre
                 ));
             }
             tokens.append_all(quote!(
-                _phantom: std::marker::PhantomData<'a>,
+                _phantom: std::marker::PhantomData::<'a>,
             ));
             tokens
         };
