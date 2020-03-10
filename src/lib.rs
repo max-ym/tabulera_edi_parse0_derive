@@ -61,7 +61,7 @@ pub fn derive_parse_error(tokens: TokenStream) -> TokenStream {
         for_brace_tokens.append_all(field);
     }
     for_brace_tokens.append_all(quote!(
-        _phantom: std::marker::PhantomData,
+        _phantom: std::marker::PhantomData<&'a ()>,
     ));
     result.append_all(quote!(
         #[derive(Debug)]
@@ -95,7 +95,7 @@ fn validate(fields: &Vec<MyField>, dest: TokenStream2) -> proc_macro2::TokenStre
                 ));
             }
             tokens.append_all(quote!(
-                _phantom: std::marker::PhantomData::<'a>,
+                _phantom: std::marker::PhantomData,
             ));
             tokens
         };
