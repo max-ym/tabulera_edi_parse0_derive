@@ -64,7 +64,7 @@ pub fn derive_parse_error(tokens: TokenStream) -> TokenStream {
         _phantom: std::marker::PhantomData<&'a ()>,
     ));
     result.append_all(quote!(
-        #[derive(Debug, Serialize)]
+        #[derive(Debug)]
         pub struct #dest<'a> { #for_brace_tokens }
     ).into_iter());
     result.append_all(validate(&fields, dest).into_iter());
