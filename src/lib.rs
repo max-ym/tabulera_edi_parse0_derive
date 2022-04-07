@@ -4,7 +4,8 @@ extern crate syn;
 #[macro_use]
 extern crate quote;
 
-use syn::export::{TokenStream, ToTokens, TokenStreamExt, TokenStream2};
+use proc_macro::TokenStream;
+use quote::{ToTokens, TokenStreamExt};
 use syn::parse_macro_input::parse;
 use syn::{ItemStruct, ExprParen, TypePath};
 
@@ -71,7 +72,7 @@ pub fn derive_parse_error(tokens: TokenStream) -> TokenStream {
     result.into()
 }
 
-fn validate(fields: &Vec<MyField>, dest: TokenStream2) -> proc_macro2::TokenStream {
+fn validate(fields: &Vec<MyField>, dest: proc_macro2::TokenStream) -> proc_macro2::TokenStream {
     let if_err = {
         let mut tokens = quote!();
         for field in fields {
